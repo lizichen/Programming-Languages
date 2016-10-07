@@ -1,0 +1,93 @@
+V "GNAT Lib v2016"
+P SS ZX
+
+RN
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U child%b		child.adb		bf7c00f2 NE OO PK
+Z ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.integer_aux%s  a-tiinau.adb	a-tiinau.ali
+W ada.text_io.integer_io%s
+W text_io%s		text_io.ads		text_io.ali
+
+U child%s		child.ads		3181dab9 EE OO PF PK
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.streams%s		a-stream.adb		a-stream.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W object%s		object.adb		object.ali
+W system%s		system.ads		system.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W system.storage_elements%s  s-stoele.adb	s-stoele.ali
+W system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiinau.ads		20160516092930 8114c8e4 ada.text_io.integer_aux%s
+D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
+D a-tiinio.adb		20160516092930 df9cd7af ada.text_io.integer_io%b
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D child.ads		20140828155427 8fc03345 child%s
+D child.adb		20140828155427 756a157e child%b
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D object.ads		20140828155427 be41e9fc object%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-secsta.ads		20160516092931 86a2856d system.secondary_stack%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20160516092930 ed88f8fb system.storage_elements%b
+D s-stratt.ads		20160516092927 aedef97e system.stream_attributes%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 6 a-textio.ads
+166U14*New_Line 12|26s7
+242U14*Put 12|22s7 24s7
+X 8 a-tiinio.ads
+46k21*Integer_IO 85e27 12|7r26
+66U14*Put 12|23s7[7] 25s7[7]
+X 11 child.ads
+5K9*Child 15l5 15e10 12|5b14 29l5 29t10
+7R9*B<15|4R9> 10e17 12p14 12r28 13p13 13r23 14P14 14r29 12|10r28 15r23 20r29
+. 15|8p14 9p13
+9i10*Y{integer} 12|12m11 17r18 25r15
+12U14*SetY 12<19 12>31 12|10b14 13t7
+12r19 Obj{7R9} 12|10b19 12m7
+12i31 Val{integer} 12|10b31 12r16
+13V13*GetY{integer} 13>18 12|15b13 18t7
+13r18 Obj{7R9} 12|15b18 17r14
+14U14*PutFields<15|10p14> 14>24 12|20b14 27t7
+14r24 Obj{7R9} 12|20b24 23r11 25r11
+X 12 child.adb
+7K12 Int_Io[8|46] 8r8
+X 15 object.ads
+2K9*Object 11|2w6 3r5 15|11e11
+4R9*A 11|7r18 15|7e17
+6i10*X{integer} 12|23r15
+8U14*SetX
+9V13*GetX{integer}
+X 31 text_io.ads
+24K9*Text_IO=24:29 12|2w6 3r5
+
