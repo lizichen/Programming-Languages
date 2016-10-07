@@ -1,0 +1,67 @@
+V "GNAT Lib v2016"
+P ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_PROTECTED_TYPES
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_ENTRY_QUEUE_LENGTH=1+
+
+U protected_stack%b	protected_stack.adb	806a4906 OO PK
+W ada.exceptions%s	a-except.adb		a-except.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.protected_objects%s  s-taprob.adb  s-taprob.ali
+
+U protected_stack%s	protected_stack.ads	41d3336c EE OO PK
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D protected_stack.ads	20161007170615 41d3336c protected_stack%s
+D protected_stack.adb	20161007170633 c1b97a6a protected_stack%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atacco.ads		20160516092931 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20160516210021 3be6931c system.os_constants%s
+D s-osinte.ads		20160516092931 8eb5b5b4 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20160516092929 801abd01 system.task_info%s
+D s-taspri.ads		20160516092928 e3ab4429 system.task_primitives%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 6 protected_stack.ads
+1K9*Protected_Stack 5l5 5e20 7|2b14 50l5 50t20
+2U12*push 2>17 7|39b12 42l6 42t10
+2i17 x{integer} 7|39b17 41r28
+3V11*pop{integer} 7|45b11 48t5
+4X2*stack_overflow 7|19r17
+4X18*stack_underflow 7|29r16
+X 7 protected_stack.adb
+4I10 stack_index{integer} 5r20
+5a2 the_stack(integer) 21m11 32r16
+6i2 index{integer} 18r13 21r21 22m11 22r20 28r12 31m9 31r18 32r26
+8w12 P_Stack 13b17 35l6 35t13 41r5 47r12
+9U13 Protected_Push 9>28 16b16 24t10 41s13
+9i28 X{integer} 16b31 21r31
+10V13 Protected_Pop{integer} 26b15 34t9 47s20
+X 17 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+

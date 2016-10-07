@@ -1,0 +1,21 @@
+V "GNAT Lib v2016"
+P ZX
+
+RN
+RV SPARK_05
+
+U genpack%b		genpack.adb		ab00899f NE OO PK GE
+
+U genpack%s		genpack.ads		a77c133f BN EE NE OO PK GE
+
+D genpack.ads		20161007183105 a77c133f genpack%s
+D genpack.adb		20161007183146 0c7c9aa0 genpack%b
+D system.ads		20160516092931 c3282aa7 system%s
+X 1 genpack.ads
+2+14 T 3r28 3r38 5r34 5r44 2|2r26 2r36
+3V23 F{2+14} 3>25 2|4s24
+3*25 X{2+14}
+4k17*GenPack 2z14 3z23 6l13 6e20 2|1b14 6l5 6t12
+5V26*Apply{2+14} 5>32 2|2b18 5l13 5t18
+5*32 Y{2+14} 2|2b24 4r26
+

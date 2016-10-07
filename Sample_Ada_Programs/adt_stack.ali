@@ -1,0 +1,44 @@
+V "GNAT Lib v2016"
+P ZX
+
+RN
+RV NO_EXCEPTIONS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U adt_stack%b		adt_stack.adb		10319d75 NE OO PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+
+U adt_stack%s		adt_stack.ads		eb21837f EE OO PK IL
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D adt_stack.ads		20161007054422 eb21837f adt_stack%s
+D adt_stack.adb		20161007054818 fb101e0a adt_stack%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+X 4 adt_stack.ads
+1K9*adt_stack 10E9 16l5 16e14 5|1b14 28l5 28t14
+3R9*stack 4r32 5r29 6r28 11c9 14e18 5|3r26 13r26 23r30
+4U14*initialize 4<25 5|23b12 26t5
+4r25 s{3R9} 5|23b23 25m4
+5U14*push 5=19 5>36 5|3b12 11t6
+5r19 s{3R9} 5|3b17 5r9 8m7 8r19 9m7 9r18
+5i36 x{integer} 5|3b33 8r31
+6U14*pop 6=18 6<35 5|13b12 21t5
+6r18 s{3R9} 5|13b16 15r8 18m5 18r16 19r11 19r23
+6i35 x{integer} 5|13b33 19m5
+7X4*stack_overflow 5|6r13
+7X20*stack_underflow 5|16r12
+10A9 int_array(integer)<integer> 12r19
+12a8*the_stack{10A9} 5|8m9 19r13
+13i8*index{integer} 5|5r11 8r21 9m9 9r20 15r10 18m7 18r18 19r25 25m6
+

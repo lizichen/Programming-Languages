@@ -1,0 +1,92 @@
+V "GNAT Lib v2016"
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASKING
+RV NO_TERMINATE_ALTERNATIVES
+RV NO_DEFAULT_INITIALIZATION
+RV NO_ELABORATION_CODE
+RV SPARK_05
+RV MAX_SELECT_ALTERNATIVES=3
+RV MAX_TASK_ENTRIES=2
+RV MAX_TASKS=1
+
+U new_stack%b		new_stack.adb		d81cdeea OO PK IL
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+
+U new_stack%s		new_stack.ads		4e4dc788 EE OO PK IL
+W system%s		system.ads		system.ali
+W system.exception_table%s  s-exctab.adb	s-exctab.ali
+W system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092931 bf4f806b ada.finalization%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D new_stack.ads		20161007162956 4e4dc788 new_stack%s
+D new_stack.adb		20161007163011 96511962 new_stack%b
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atacco.ads		20160516092931 4c36d12f system.address_to_access_conversions%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-finroo.ads		20160516092931 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20160516210021 3be6931c system.os_constants%s
+D s-osinte.ads		20160516092931 8eb5b5b4 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20160516092929 801abd01 system.task_info%s
+D s-taspri.ads		20160516092928 e3ab4429 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20160516092932 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20160516092927 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20160516092929 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+X 10 new_stack.ads
+2K9*new_stack 6l5 6e14 11|7b14 57l5 57t14
+3U12*push 3>17 11|45b12 48t6
+3i17 x{integer} 11|45b17 47r21
+4V11*pop{integer} 11|50b11 55t5
+5X2*stack_overflow 11|24r21
+5X18*stack_underflow 11|33r19
+X 11 new_stack.adb
+8I10 stack_index{integer} 9r20
+9a2 the_stack(integer) 26m14 36r17
+10i2 index{integer} 23r15 26r24 27m14 27r23 32r14 35m13 35r22 36r27
+11b2 finished{boolean}
+13t7 stack_call 18b12 43l6 43t16 47r5 53r4
+14Y11 push 14>16 22b16 29l13 29t17 47s16
+14i16 x{integer} 26r34
+15Y11 pop 15<15 31b15 38l12 38t15 53s15
+15i15 y{integer} 36m13 36r13
+22i21 x{integer}
+31i19 y{integer}
+51i4 r{integer} 53m19 54r11
+X 22 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+

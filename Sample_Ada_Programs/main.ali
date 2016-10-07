@@ -1,0 +1,72 @@
+V "GNAT Lib v2016"
+M P W=b
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U main%b		main.adb		4edb48ba NE OO SU IL
+Z ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.integer_aux%s  a-tiinau.adb	a-tiinau.ali
+W ada.text_io.integer_io%s
+W stack%s		stack.adb		stack.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiinau.ads		20160516092930 8114c8e4 ada.text_io.integer_aux%s
+D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
+D a-tiinio.adb		20160516092930 df9cd7af ada.text_io.integer_io%b
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D main.adb		20161007025741 5f867b07 main%b
+D stack.ads		20161007025313 548b1574 stack%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 6 a-textio.ads
+166U14*New_Line 13|26s38 28s39
+242U14*Put 13|13s3 15s3 26s9 28s9
+X 8 a-tiinio.ads
+46k21*Integer_IO 85e27 13|6r25
+56U14 Get 13|14s3[6] 16s3[6]
+66U14 Put 13|22s5[6]
+X 13 main.adb
+4U11*main 4b11 29l5 29t9
+6K11 int_io[8|46] 7r7
+10i3 x{integer} 14m7 17r15
+10i5 y{integer} 16m7 20r15
+10i7 z{integer} 21m5 22r9
+17i7 i{integer} 18r10
+20i7 i{integer}
+X 14 stack.ads
+1K9*stack 13|2w6 9r7 14|5e10
+2U12*push 13|18s5
+3V11*pop{integer} 13|21s10
+4X2*stack_overflow 13|25r9
+4X18*stack_underflow 13|27r9
+X 27 text_io.ads
+24K9*Text_IO=24:29 13|1w6 5r7
+

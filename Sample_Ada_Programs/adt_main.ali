@@ -1,0 +1,77 @@
+V "GNAT Lib v2016"
+M P W=b
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U adt_main%b		adt_main.adb		e2c47a35 NE OO SU IL
+Z ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.text_io%s		a-textio.adb		a-textio.ali
+Z ada.text_io.integer_aux%s  a-tiinau.adb	a-tiinau.ali
+W ada.text_io.integer_io%s
+W adt_stack%s		adt_stack.adb		adt_stack.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiinau.ads		20160516092930 8114c8e4 ada.text_io.integer_aux%s
+D a-tiinio.ads		20160516092928 aa04e5d6 ada.text_io.integer_io%s
+D a-tiinio.adb		20160516092930 df9cd7af ada.text_io.integer_io%b
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D adt_main.adb		20161007054835 4c33df83 adt_main%b
+D adt_stack.ads		20161007054422 eb21837f adt_stack%s
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 6 a-textio.ads
+166U14*New_Line 11|26s13 28s3 31s13 36s38 38s39
+242U14*Put 11|16s3 18s3 36s9 38s9
+X 8 a-tiinio.ads
+46k21*Integer_IO 85e27 11|6r25
+56U14 Get 11|17s3[6] 19s3[6]
+66U14 Put 11|26s5[6] 31s5[6]
+X 11 adt_main.adb
+4U11*adt_main 4b11 39l5 39t13
+6K11 int_io[8|46] 7r7
+10i3 x{integer} 17m7 20r15
+10i5 y{integer} 19m7 24r15 29r15
+10i7 z{integer} 25m12 26r9 30m12 31r9
+11r3 s1{12|3R9} 14m14 21m11 21r11 25m9 25r9
+11r7 s2{12|3R9} 15m14 22m11 22r11 30m9 30r9
+20i7 i{integer} 21r14 22r18
+24i7 i{integer}
+29i7 i{integer}
+X 12 adt_stack.ads
+1K9*adt_stack 11|2w6 9r7 12|16e14
+3R9*stack 11|11r11 12|14e18
+4U14*initialize 11|14s3 15s3
+5U14*push 11|21s6 22s6
+6U14*pop 11|25s5 30s5
+7X4*stack_overflow 11|35r9
+7X20*stack_underflow 11|37r9
+X 27 text_io.ads
+24K9*Text_IO=24:29 11|1w6 5r7
+
