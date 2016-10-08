@@ -15,12 +15,6 @@ procedure AQMain is
 
 	Epsilon: Constant Float:= 0.000001;
 
-	function MyF(X:Float) return Float is
-	begin
-		return Sin(X * X); 
-	end MyF;
-	package corePack is new AdaptiveQuad(Float, MyF);
-
 	task ReadPairs;
 	task ComputeArea is
 		entry abValues(a: Float; b: Float);
@@ -28,6 +22,15 @@ procedure AQMain is
 	task PrintResult is
 		entry printMsg(a: Float; b:Float; computedResult:Float);
 	end PrintResult;
+
+	-- END OF DECLARATIVE STUFF
+
+	function MyF(X:Float) return Float is
+		begin
+			return Sin(X * X); 
+		end MyF;
+	
+	package corePack is new AdaptiveQuad(MyF);
 
 	task body ReadPairs is
 		A,B:Float;
@@ -57,11 +60,18 @@ procedure AQMain is
 			loop
 				select
 					accept printMsg(a:Float; b:Float; computedResult:Float) do
-						Put("The area under sin(x^2) for x = ");Put(a);Put(" to ");Put(b);Put(" is ");Put(computedResult);
+						Put("The area under sin(x^2) for x = ");
+						Put(a,5,3,0);
+						Put(" to ");
+						Put(b,5,3,0);
+						Put(" is ");
+						Put(computedResult,5,7,0);
+						new_line;
 					end printMsg;
 				end select;
 			end loop;
 		end PrintResult;
+
 begin
 	null;
 end AQMain;

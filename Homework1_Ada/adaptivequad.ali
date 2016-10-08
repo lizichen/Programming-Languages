@@ -1,0 +1,38 @@
+V "GNAT Lib v2016"
+P ZX
+
+RN
+RV NO_FLOATING_POINT
+RV NO_RECURSION
+RV SPARK_05
+
+U adaptivequad%b	adaptivequad.adb	1681d276 NE OO PK GE
+
+U adaptivequad%s	adaptivequad.ads	ab773c0a BN EE NE OO PK GE
+
+D adaptivequad.ads	20161008012321 ab773c0a adaptivequad%s
+D adaptivequad.adb	20161008012223 bdf6ee7c adaptivequad%b
+D system.ads		20160516092931 c3282aa7 system%s
+X 1 adaptivequad.ads
+4V23 F{float} 4>25 2|9s31 9s44 9s51
+4f25 X{float}
+5k17*AdaptiveQuad 4z23 9l13 9e25 2|1b14 32l5 32t17
+6V26*SimpsonsRule{float} 6>39 6>49 2|4b18 10l13 10t25 17s25 18s26 29s40
+6f39 a{float} 2|4b31 7r21 8r27 9r33
+6f49 b{float} 2|4b41 7r23 8r25 9r53
+7V26*RecAQua{float} 7>34 7>43 7>52 7>63 2|13b18 22s32 22s60 24l13 24t20 29s24
+7f34 a{float} 2|13b26 16r23 17r38 22r40
+7f43 b{float} 2|13b35 16r25 18r41 22r70
+7f52 eps{float} 2|13b44 19r58 22r44 22r72
+7f63 whole{float} 2|13b55 19r41 20r63
+8V26*AQuad{float} 8>32 8>41 8>50 2|27b18 30l13 30t18
+8f32 A{float} 2|27b24 29r32 29r53
+8f41 B{float} 2|27b33 29r34 29r55
+8f50 Eps{float} 2|27b42 29r36
+X 2 adaptivequad.adb
+5f9 h3{float} 8m17 9r24
+5f12 c{float} 7m17 9r46
+14f9 c{float} 16m17 17r40 18r39 22r42 22r68
+14f11 left{float} 17m17 19r26 20r32 20r48 22r52
+14f16 right{float} 18m17 19r33 20r39 20r55 22r80
+

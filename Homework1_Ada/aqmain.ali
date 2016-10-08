@@ -1,0 +1,142 @@
+V "GNAT Lib v2016"
+M P W=b
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_RECURSION
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+RV MAX_SELECT_ALTERNATIVES=1
+RV MAX_TASK_ENTRIES=1
+RV MAX_TASKS=1+
+
+U aqmain%b		aqmain.adb		bc9ad974 NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+Z ada.numerics.aux%s	a-numaux.adb		a-numaux.ali
+W ada.numerics.generic_elementary_functions%s
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W adaptivequad%s	adaptivequad.adb	adaptivequad.ali
+W system%s		system.ads		system.ali
+W system.exn_llf%s	s-exnllf.adb		s-exnllf.ali
+W system.fat_flt%s	s-fatflt.ads		s-fatflt.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092931 bf4f806b ada.finalization%s
+D a-flteio.ads		20160516092929 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20160516092928 bb51c45a ada.numerics%s
+D a-numaux.ads		20160516092931 243fe0b7 ada.numerics.aux%s
+D a-ngelfu.ads		20160516092931 b8fdcb46 ada.numerics.generic_elementary_functions%s
+D a-ngelfu.adb		20160516092929 5e96a931 ada.numerics.generic_elementary_functions%b
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiflio.ads		20160516092927 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D adaptivequad.ads	20161008012321 ab773c0a adaptivequad%s
+D adaptivequad.adb	20161008012223 bdf6ee7c adaptivequad%b
+D aqmain.adb		20161008014553 0b4c4f51 aqmain%b
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atacco.ads		20160516092931 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-exnllf.ads		20160516092931 bc7ebbdc system.exn_llf%s
+D s-fatflt.ads		20160516092930 11beb392 system.fat_flt%s
+D s-fatgen.ads		20160516092933 49cbaf86 system.fat_gen%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-finroo.ads		20160516092931 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20160516210021 3be6931c system.os_constants%s
+D s-osinte.ads		20160516092931 8eb5b5b4 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20160516092929 801abd01 system.task_info%s
+D s-taspri.ads		20160516092928 e3ab4429 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20160516092932 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20160516092927 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20160516092929 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 1 ada.ads
+16K9*Ada 19e8 18|4r6 6r6 7r5 13r39
+X 4 a-flteio.ads
+20K13*Float_Text_IO[14|46] 18|6w10 7r9
+X 6 a-numeri.ads
+16K13*Numerics 32e17 18|4r10 13r43
+X 8 a-ngelfu.ads
+39k22*Generic_Elementary_Functions 170e46 18|4w19 13r52
+80V13 Sin{float} 18|30s32[13]
+X 13 a-textio.ads
+166U14*New_Line 18|69s49
+242U14*Put 18|63s49 65s49 67s49
+X 14 a-tiflio.ads
+57U14*Get 18|39s33[4|20] 40s33[4|20]
+68U14*Put 18|64s49[4|20] 66s49[4|20] 68s49[4|20]
+X 16 adaptivequad.ads
+5k17*AdaptiveQuad 9e25 18|9w6 33r33
+8V26 AQuad{float} 18|51s76[33]
+X 18 aqmain.adb
+11U11*AQMain 11b11 77l5 77t11
+13K17 FloatFunctions[8|39] 14r13
+16f9 Epsilon{float} 51r86
+18t14 ReadPairs 35b19 43l21 43t30
+19t14 ComputeArea 41r33 45b19 56l21 56t32
+20Y23 abValues 20>32 20>42 41s45 50b48 53l45 53t53
+20f32 a{float} 51r82 52r70
+20f42 b{float} 51r84 52r72
+22t14 PrintResult 52r49 58b19 73l21 73t32
+23Y23 printMsg 23>32 23>42 23>51 52s61 62b48 70l45 70t53
+23f32 a{float} 64r53
+23f42 b{float} 66r53
+23f51 computedResult{float} 68r53
+28V18 MyF{float} 28b18 28>22 31l21 31t24 33r46
+28f22 X{float} 30r36 30r40
+33K17 corePack[16|5] 51r67
+36f17 A{float} 39m37 41r54
+36f19 B{float} 40m37 41r56
+38i29 i{integer}
+46f17 computedResult{float} 51m49 52r74
+50f57 a{float}
+50f67 b{float}
+62f57 a{float}
+62f66 b{float}
+62f75 computedResult{float}
+X 37 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 51 text_io.ads
+24K9*Text_IO=24:29 18|1w6 2r5
+
