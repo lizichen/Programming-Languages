@@ -17,29 +17,29 @@ package body new_stack is
 
  task body stack_call is
   begin
-    loop 
-      select 
-	accept push(x: integer) do
-	  if (index > 20) then
-	      raise stack_overflow;
-	  else 
-	     the_stack(index) := x;
-	     index := index + 1;
-	  end if;
-	end push;
-      or
-       accept pop(y:out integer) do
-	 if (index <= 1) then
-	    raise stack_underflow;
-	 else
-	    index := index - 1;
-	    y:= the_stack(index);
-	 end if;
-       end pop;
-      or
-        terminate;
-     end select;
-    end loop;
+        loop 
+              select 
+                	accept push(x: integer) do
+                	  if (index > 20) then
+                	      raise stack_overflow;
+                	  else 
+                	     the_stack(index) := x;
+                	     index := index + 1;
+                	  end if;
+                	end push;
+              or
+                 accept pop(y:out integer) do
+                	 if (index <= 1) then
+                	    raise stack_underflow;
+                	 else
+                	    index := index - 1;
+                	    y:= the_stack(index);
+                	 end if;
+                 end pop;
+              or
+                  terminate;
+             end select;
+        end loop;
  end stack_call;
 
  procedure push(x:integer) is
