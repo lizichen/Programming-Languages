@@ -1,0 +1,245 @@
+Welcome to Racket v6.6.
+R5RS legacy support loaded
+> (define L '(1 2 3 4))
+> (car L)
+1
+> (cdr L)
+(2 3 4)
+> L
+(1 2 3 4)
+> (car (cdr L))
+2
+> (car (cdr (cdr L)))
+3
+> ;;; as a shortcut, certain functions that combine car and cdr are
+  ;;; defined for you, based on the pattern C...R, where ... is a
+  ;;; series of A's and D's, each A representing CAR and each D
+  ;;; representing CDR.
+
+(cadr L)  ;; equivalent to (car (cdr L)), the second element of L
+2
+> (caddr L) ;; equivalent to (car (cdr (cdr L))), the third element of L
+3
+> (cadar '((1 2 3) (4 5 6))) ;; equivalent to (car (cdr (car ....))), the second element
+                             ;; of the first element of '((1 2 3) (4 5 6))
+2
+
+ 
+> ;;; Definiing the NTH function:
+  ;;; (nth n L) returns the nth element of L
+  ;;; Base Case:  N=1,  return (car L)
+  ;;; Assumption:  nth can be used to return the n-1th element of L
+  ;;; Recursive step:  the Nth element of L is the n-1th element of (cdr L)
+
+(define (nth n L)
+  (cond ((= n 1) (car L))
+        (else (nth (- n 1) (cdr L)))))
+> (nth 4 '(2 4 6 8 10))
+8
+> 
+;;;; CONSTRUCTING A LIST
+
+;;; By specifying a list literal using '(...).  The quote tells the system
+;;; not to evaluate anything in the list.
+'((1 2) (3 4))   ;; specify the list using a literal
+((1 2) (3 4))
+
+
+> ;;; By using the LIST function, which evaluates its parameters and
+  ;;; creates a list containing those values.
+(list 'hello (+ 3 4) (car '(1 2 3)) "bye")  
+(hello 7 1 "bye")
+
+
+> ;;; By using CONS
+;;; (CONS x L)  returns a new list whose first element is x and whose 
+;;; subsequent elements are the elements of L.  That is, it returns a
+;;; list whose CAR is x and whose cdr is L.
+
+(cons 3 '(5 7 9 11))
+(3 5 7 9 11)
+> L  
+(1 2 3 4)
+> (cons 55 L)
+(55 1 2 3 4)
+> L   ;; cons does NOT modify its parameters
+(1 2 3 4)
+> (define M (cons 55 L))
+> M
+(55 1 2 3 4)
+> L
+(1 2 3 4)
+> ;;; (APPEND L1 L2) creates a list containing all the elements of L1 followed
+  ;;; by the elements of L2
+
+(append '(1 2 3 4) '(5 6 7 8))
+(1 2 3 4 5 6 7 8)
+> L
+(1 2 3 4)
+> M
+(55 1 2 3 4)
+> (append L M)
+(1 2 3 4 55 1 2 3 4)
+>
+;;; Notice that CONS and APPEND are very different.
+(cons L M)
+((1 2 3 4) 55 1 2 3 4)
+
+> ;;;; DEFINING APPEND OURSELVES
+
+;;; (myappend L1 L2)
+;;; Base Case: When L1 is empty, return L2
+;;; Assumption: (When L1 has N elements) Assume myappend works on a list with n-1 elements. In other words, assume (myappend (cdr L1) L2) works.
+;;; Step:  Call (cons (car L1) (myappend (cdr L1) L2))
+
+(define (myappend L1 L2)
+  (cond ((null? L1) L2)
+        (else (cons (car L1) (myappend (cdr L1) L2)))))
+> (myappend '(1 2 3 4) '(5 6 7 8))
+(1 2 3 4 5 6 7 8)
+> 
+;;; Reverse reverses a list
+(reverse '(1 2 3 4 5))
+(5 4 3 2 1)
+> (reverse '(1 2 (3 4) 5))
+(5 (3 4) 2 1)
+> ;;;; WRITING REVERSE OURSELVES
+;;; (myreverse L) returns a new list with the elements of L in reverse order
+;;; Base Case: L is empty, return '()
+;;; Assumption (where the size of L is N), assume myreverse works on a list with N-1 elements. That is, assume (myreverse (cdr L)) works.
+;;; Step:  called (append (myreverse (cdr L)) (list (car L)) to create a list with (car L) as
+;;; the list element.
+
+(define (myreverse L)
+  (cond ((null? L) '())
+        (else (append (myreverse (cdr L)) (list (car L))))))
+> (myreverse '(1 2 3 4 5 6))
+(6 5 4 3 2 1)
+
+;;; Notice that the above definition of reverse has complexity O(n^2), since at each level
+;;; of the recursion, append is called.  Append is linear in the size of its first parameter.
+
+> ;;; DEFINING A LINEAR-TIME REVERSE
+  ;;; The idea is that we are moving elements from the front of a FROM list and adding
+  ;;; them to the front of a TO list. When the FROM list is empty, the TO list contains
+  ;;; all the elements of the original FROM list in reverse order.  Only constant time
+  ;;; operations (cons, car, cdr) are used at each level of the recursion.
+  
+(define (rev FROM TO)
+  (cond ((null? FROM) TO)
+        (else (rev (cdr FROM) (cons (car FROM) TO)))))
+> (rev '(1 2 3 4 5) '())  ;;; initially the TO list is empty.
+(5 4 3 2 1)
+
+> (define (myreverse L) (rev L '()))   ;;; myreverse calls rev, with an empty TO list.
+> (myreverse '(1 2 3 4 5))
+(5 4 3 2 1)
+
+
+> ;;; FUNCTIONS ARE FIRST-CLASS OBJECTS. You can put them in lists, pass them
+  ;;; as parameters, return them as values, etc.
+
+(define (f x) (+ x 1))     ;;; defining a function f
+> (define (g x) (- x 1))   ;;; defining a function g
+> (list f g)    ;;; creating a list whose elements happen to be the functions f and g
+(#<procedure:f> #<procedure:g>)
+
+> ;;; You can write a function that takes another function as a parameter
+  ;;; This is known as a Higher-Order function.
+
+(define (foo h) (h 3))  ;;; this function takes h as a parameter and calls (h 3),
+                        ;;; so the actual parameter corresponding to h must be a function.
+> (foo f)   
+4
+> (foo g)
+2
+
+> ;;; (MAP F L) calls F on every element of L, returning a list of the results.
+
+(map f '(2 4 6 8 10))
+(3 5 7 9 11)
+
+> ;;; Write our own MAP
+
+(define (mymap f L)
+  (cond ((null? L) '())
+        (else (cons (f (car L)) (mymap f (cdr L))))))
+> (mymap g '(2 4 6 8))
+(1 3 5 7)
+
+>
+;;; Defining anonymous functions using LAMBDA
+;;; (lambda (param1 ... paramN) exp)
+;;; defines a function WITH NO NAME that takes the parameters param1 ... paramN
+;;; and has the body exp.
+
+(lambda (x) (+ x 1))   ;; an anonymous function that takes a parameter x and returns x+1
+#<procedure>
+
+>  ;;; passing a function defined by a lambda to another function.
+(map (lambda (y) (* y 2)) '(1 2 3 4 5 6))
+(2 4 6 8 10 12)
+
+> ;;; RETURNING FUNCTIONS AS RESULTS
+  ;;; A function that returns another function is also considered a higher-order function.
+
+(define (bar x)
+  (lambda (y) (+ x y)))
+> 
+(define bif (bar 3))
+> bif
+#<procedure>
+> (bif 10)
+13
+> 
+;;;; LET is used to introduce local variables.
+;;;; (let ((var1 val1) (var2 val2) ... (varN valN)) exp) defines a new scope in which
+;;;; the variables var1, var2, ... varN have values val1, val2, ... valN, respectively,
+;;;  and then evaluates exp in that scope.
+
+;;; Note that the scope of var1, var2,... varN is only within exp (the body of the LET),
+;;; so none of val1, val2, ... valN can refer to var1, var2, ... varN.
+
+
+(let ((a 6) (b 7)) (+ a b))   ;;; introduces variables a and b in the local scope.
+13
+> a   ;;; a is not defined in the outer (top-level) scope.
+a: undefined;
+ cannot reference undefined identifier
+  context...:
+   /Applications/Racket v6.6/collects/racket/private/misc.rkt:88:7
+   /Applications/Racket v6.6/share/pkgs/r5rs-lib/r5rs/run.rkt: [running body]
+
+> ;;; As stated above, the scope of any variable introduced by let is only the body of the let.
+
+(let ((a 6) (b (+ a 1))) (+ a b))   ;;; the expression giving a value to b cannot refer to a.
+a: undefined;
+ cannot reference undefined identifier
+  context...:
+   /Applications/Racket v6.6/collects/racket/private/misc.rkt:88:7
+   /Applications/Racket v6.6/share/pkgs/r5rs-lib/r5rs/run.rkt: [running body]
+
+> ;;; Can nest LET's to get the desired effect.  Scheme uses block structure and static scoping.
+  ;;; if a variable isn't found in the current scope, the next outer scope is checked.
+
+(let ((a 6))
+    (let ((b (+ a 1))) (+ a b)))
+13
+
+> 
+;;; A function call is of the form (exp1 exp2 ...  expN), where
+;;; exp1 had better evaluate to a function. That is, exp1 doesn't have to
+;;; be the name of a function.
+
+(f 5)  ;;; here the function being called is referenced by its name
+6
+
+> ;;; here the function being called is defined by a lambda
+
+((lambda (x) (* x 3)) 5)
+15
+
+>  ;;; here the function being called is retrieved from a list.
+((car (list f g)) 7)
+8
+

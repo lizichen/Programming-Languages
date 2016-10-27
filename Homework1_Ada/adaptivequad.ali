@@ -10,25 +10,26 @@ U adaptivequad%b	adaptivequad.adb	1681d276 NE OO PK GE
 
 U adaptivequad%s	adaptivequad.ads	ab773c0a BN EE NE OO PK GE
 
-D adaptivequad.ads	20161008012321 ab773c0a adaptivequad%s
-D adaptivequad.adb	20161008012223 bdf6ee7c adaptivequad%b
+D adaptivequad.ads	20161008015314 ab773c0a adaptivequad%s
+D adaptivequad.adb	20161008015315 bdf6ee7c adaptivequad%b
 D system.ads		20160516092931 c3282aa7 system%s
 X 1 adaptivequad.ads
-4V23 F{float} 4>25 2|9s31 9s44 9s51
-4f25 X{float}
-5k17*AdaptiveQuad 4z23 9l13 9e25 2|1b14 32l5 32t17
-6V26*SimpsonsRule{float} 6>39 6>49 2|4b18 10l13 10t25 17s25 18s26 29s40
-6f39 a{float} 2|4b31 7r21 8r27 9r33
-6f49 b{float} 2|4b41 7r23 8r25 9r53
-7V26*RecAQua{float} 7>34 7>43 7>52 7>63 2|13b18 22s32 22s60 24l13 24t20 29s24
-7f34 a{float} 2|13b26 16r23 17r38 22r40
-7f43 b{float} 2|13b35 16r25 18r41 22r70
-7f52 eps{float} 2|13b44 19r58 22r44 22r72
-7f63 whole{float} 2|13b55 19r41 20r63
-8V26*AQuad{float} 8>32 8>41 8>50 2|27b18 30l13 30t18
-8f32 A{float} 2|27b24 29r32 29r53
-8f41 B{float} 2|27b33 29r34 29r55
-8f50 Eps{float} 2|27b42 29r36
+11V23 F{float} 11>25 2|9s31 9s44 9s51
+11f25 X{float}
+12k17*AdaptiveQuad 11z23 16l13 16e25 2|1b14 32l5 32t17
+13V26*SimpsonsRule{float} 13>39 13>49 2|4b18 10l13 10t25 17s25 18s26 29s40
+13f39 a{float} 2|4b31 7r21 8r27 9r33
+13f49 b{float} 2|4b41 7r23 8r25 9r53
+14V26*RecAQua{float} 14>34 14>43 14>52 14>63 2|13b18 22s32 22s60 24l13 24t20
+. 29s24
+14f34 a{float} 2|13b26 16r23 17r38 22r40
+14f43 b{float} 2|13b35 16r25 18r41 22r70
+14f52 eps{float} 2|13b44 19r58 22r44 22r72
+14f63 whole{float} 2|13b55 19r41 20r63
+15V26*AQuad{float} 15>32 15>41 15>50 2|27b18 30l13 30t18
+15f32 A{float} 2|27b24 29r32 29r53
+15f41 B{float} 2|27b33 29r34 29r55
+15f50 Eps{float} 2|27b42 29r36
 X 2 adaptivequad.adb
 5f9 h3{float} 8m17 9r24
 5f12 c{float} 7m17 9r46

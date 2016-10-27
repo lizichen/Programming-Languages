@@ -54,9 +54,9 @@ D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-tiflio.ads		20160516092927 56fbda09 ada.text_io.float_io%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
-D adaptivequad.ads	20161008012321 ab773c0a adaptivequad%s
-D adaptivequad.adb	20161008012223 bdf6ee7c adaptivequad%b
-D aqmain.adb		20161008014553 0b4c4f51 aqmain%b
+D adaptivequad.ads	20161008015314 ab773c0a adaptivequad%s
+D adaptivequad.adb	20161008015315 bdf6ee7c adaptivequad%b
+D aqmain.adb		20161008015316 0b4c4f51 aqmain%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092927 5421119b interfaces.c%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
@@ -106,8 +106,8 @@ X 14 a-tiflio.ads
 57U14*Get 18|39s33[4|20] 40s33[4|20]
 68U14*Put 18|64s49[4|20] 66s49[4|20] 68s49[4|20]
 X 16 adaptivequad.ads
-5k17*AdaptiveQuad 9e25 18|9w6 33r33
-8V26 AQuad{float} 18|51s76[33]
+12k17*AdaptiveQuad 16e25 18|9w6 33r33
+15V26 AQuad{float} 18|51s76[33]
 X 18 aqmain.adb
 11U11*AQMain 11b11 77l5 77t11
 13K17 FloatFunctions[8|39] 14r13
@@ -124,7 +124,7 @@ X 18 aqmain.adb
 23f51 computedResult{float} 68r53
 28V18 MyF{float} 28b18 28>22 31l21 31t24 33r46
 28f22 X{float} 30r36 30r40
-33K17 corePack[16|5] 51r67
+33K17 corePack[16|12] 51r67
 36f17 A{float} 39m37 41r54
 36f19 B{float} 40m37 41r56
 38i29 i{integer}

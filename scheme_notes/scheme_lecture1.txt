@@ -1,0 +1,200 @@
+Welcome to Racket v6.6.
+R5RS legacy support loaded
+;;; Before we start on the syntax of Scheme, here's the implementation of the
+;;; Towers of Hanoi Problem in Scheme.
+> (define (hanoi N from to temp)
+  (cond ((= N 0) (newline) 'Done)
+	(else (hanoi (- N 1) from temp to)
+	      (display "Move disk from ") (display from)
+	      (display " to ") (display to) (newline)
+	      (hanoi (- N 1) temp to from))))
+> (hanoi 2 'a 'b 'c)
+
+Move disk from a to c
+
+Move disk from a to b
+
+Move disk from c to b
+
+done
+> (hanoi 5 'a 'b 'c)
+
+Move disk from a to b
+
+Move disk from a to c
+
+Move disk from b to c
+
+Move disk from a to b
+
+Move disk from c to a
+
+Move disk from c to b
+
+Move disk from a to b
+
+Move disk from a to c
+
+Move disk from b to c
+
+Move disk from b to a
+
+Move disk from c to a
+
+Move disk from b to c
+
+Move disk from a to b
+
+Move disk from a to c
+
+Move disk from b to c
+
+Move disk from a to b
+
+Move disk from c to a
+
+Move disk from c to b
+
+Move disk from a to b
+
+Move disk from c to a
+
+Move disk from b to c
+
+Move disk from b to a
+
+Move disk from c to a
+
+Move disk from c to b
+
+Move disk from a to b
+
+Move disk from a to c
+
+Move disk from b to c
+
+Move disk from a to b
+
+Move disk from c to a
+
+Move disk from c to b
+
+Move disk from a to b
+
+done
+> ;; This is a comment
+;; Basic types:  integer, floating point , strings
+0
+0
+> 3.4
+3.4
+> "hello"
+"hello"
+> ;;; Another basic type is a symbol. It's only property is its name.
+'foo
+foo
+> ;;; #t is true, #f is false
+#t
+#t
+> #f
+#f
+> ;; The primary aggregate type is the list.
+'(1 2 a b 3.4 5)  ;; this is the list containing 1, 2, the symbol a, the symbol b, 3.4 and 5
+(1 2 a b 3.4 5)
+> ;;; lists are heterogeneous, the elements can be of different types
+;;; lists can be nested
+'(1 2 (3 (4 5) 6) 7)
+(1 2 (3 (4 5) 6) 7)
+> ;;; the empty list is written '() and is pronouned "NIL".
+'()
+()
+> 
+
+;;; MOVING ON TO EXPRESSIONS
+
+;; atomic expressions: numeric literals, string literals, symbol literals. See above
+45
+45
+> "bye"
+"bye"
+> 
+
+;;; Combinations (i.e. aggregate expressions) are of the form:  ( ... )
+;;; Expressions are always prefix.
+(+ 4 5)
+9
+> (* 3 (+ 6 7))
+39
+> ;; if expression:  (if <cond> <conseq> <alt>)
+
+(if (= 5 4) 'yes 'no)
+no
+> (if (= 5 4) (* 4 5) (* 8 9))
+72
+> ;;; Defining variables: (define <name> <value>)
+
+(define x (* 5 (+ 3 4)))
+> x
+35
+> 'foo   ;; with the quote, ', this is just the symbol foo.
+foo
+> foo  ;; without the quote, this references the variable foo (which doesn't exist!)
+foo: undefined;
+ cannot reference undefined identifier
+  context...:
+   /Applications/Racket v6.6/collects/racket/private/misc.rkt:88:7
+   /Applications/Racket v6.6/share/pkgs/r5rs-lib/r5rs/run.rkt: [running body]
+
+> ;;; Need a quote if you don't want the interpreter to treat your input as an
+> ;;; as something to be evaluated.
+0
+0
+> '( 1 2 3)
+(1 2 3)
+> (1 2 3)   ;; no quote: it's going to try to treat 1 as an operator.
+application: not a procedure;
+ expected a procedure that can be applied to arguments
+  given: 1
+  arguments...:
+   2
+   3
+  context...:
+   /Applications/Racket v6.6/collects/racket/private/misc.rkt:88:7
+   /Applications/Racket v6.6/share/pkgs/r5rs-lib/r5rs/run.rkt: [running body]
+> 
+
+;; Defining functions:   (define (<fname> <param1> ... <paramN>) body)
+
+(define (fac N)
+  (if (= N 0) 1 (* N (fac (- N 1)))))
+> 
+
+;;; Alternative form of conditional:   (cond (cond1 val1) ... (condN valN))
+
+x
+35
+> (cond ((= x 25) (* 8 9))
+        ((= x 35) (* 4 5))
+        (else 'No))
+20
+> (cond ((= x 24) 'yes))
+> 
+
+;;; Accessing elements of a list:  
+;;;  (car L)  returns the first element of the list L
+
+(car '(2 4 6 8))
+2
+> ;;; (cdr L) returns a list containing all the elements of L EXCEPT the first one.
+  ;;; i.e. it returns the "rest" of L or the "tail" of L.
+(cdr '(2 4 6 8))
+(4 6 8)
+> (define L '(2 3 4 5 6))
+> (car L)   ;; CAR and CDR (like all operators) do NOT modify their arguments.
+2
+> (cdr L)
+(3 4 5 6)
+> L  
+(2 3 4 5 6)
+
+
