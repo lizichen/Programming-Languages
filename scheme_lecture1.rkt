@@ -1,5 +1,5 @@
-Welcome to Racket v6.6.
-R5RS legacy support loaded
+;;Welcome to Racket v6.6.
+;;R5RS legacy support loaded
 ;;; Before we start on the syntax of Scheme, here's the implementation of the
 ;;; Towers of Hanoi Problem in Scheme.
 > (define (hanoi N from to temp)
@@ -10,78 +10,78 @@ R5RS legacy support loaded
 	      (hanoi (- N 1) temp to from))))
 > (hanoi 2 'a 'b 'c)
 
-Move disk from a to c
+;Move disk from a to c
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from c to b
+;Move disk from c to b
 
-done
+;done
 > (hanoi 5 'a 'b 'c)
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from a to c
+;Move disk from a to c
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from c to b
+;Move disk from c to b
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from a to c
+;Move disk from a to c
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from b to a
+;Move disk from b to a
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from a to c
+;Move disk from a to c
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from c to b
+;Move disk from c to b
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from b to a
+;Move disk from b to a
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from c to b
+;Move disk from c to b
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from a to c
+;Move disk from a to c
 
-Move disk from b to c
+;Move disk from b to c
 
-Move disk from a to b
+;Move disk from a to b
 
-Move disk from c to a
+;Move disk from c to a
 
-Move disk from c to b
+;Move disk from c to b
 
-Move disk from a to b
+;Move disk from a to b
 
-done
+;done
 > ;; This is a comment
 ;; Basic types:  integer, floating point , strings
 0

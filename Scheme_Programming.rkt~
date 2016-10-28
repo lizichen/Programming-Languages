@@ -3,7 +3,9 @@
 ;; Programming Language Assignment - Lizi Chen - lc3397@nyu.edu   ;;
 ;;                                                                ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; prep function: display-all.
+;; prep function: display-all
+;;
+
 (define (display-answer . stuff)
   (for-each display stuff) (newline))
 
@@ -79,33 +81,17 @@
 ;; i.e., (translate '-) shoudl return the - operator:
 ;;                    #<procedure:->
 ;; ((translate '*) 3 4) should return 12.
-(define (translate op)
-  (cond ((eq? '* op) *)
-        ((eq? '+ op) +)
-        ((eq? '- op) -)
-        ((eq? '/ op) /)))
-(display-answer "((translate '*) 3 4) = " ((translate '*) 3 4))
+
+
+                      
+
 
 ;; 6) Function (postfix-val exp), exp represents an expression in postfix notation, that returns the result of evaulating exp.
-;;
-(define (postfix-eval exp)
-  
+
 
 
 ;; 7) A distinct list to represent a set. 
 
-
-
-
-
-
-
-
-
-
-
-
-  
 
 
                                        

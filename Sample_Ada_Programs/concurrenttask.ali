@@ -1,0 +1,93 @@
+V "GNAT Lib v2016"
+M P W=b
+P ZX
+
+RN
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_SELECT_STATEMENTS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASK_HIERARCHY
+RV NO_TASKING
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+RV MAX_SELECT_ALTERNATIVES=1
+RV MAX_TASK_ENTRIES=1
+RV MAX_TASKS=1+
+
+U concurrenttask%b	concurrenttask.adb	d3b5984f NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system%s		system.ads		system.ali
+W system.parameters%s	s-parame.adb		s-parame.ali
+W system.soft_links%s	s-soflin.adb		s-soflin.ali
+W system.task_info%s	s-tasinf.adb		s-tasinf.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
+W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20160516092928 3ffc8e18 ada%s
+D a-except.ads		20160516092928 291912d5 ada.exceptions%s
+D a-finali.ads		20160516092931 bf4f806b ada.finalization%s
+D a-flteio.ads		20160516092929 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20160516092927 e4a01f64 ada.io_exceptions%s
+D a-reatim.ads		20160516092928 a87e2da7 ada.real_time%s
+D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
+D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
+D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
+D a-tiflio.ads		20160516092927 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
+D concurrenttask.adb	20161021234836 77e9f926 concurrenttask%b
+D interfac.ads		20160516092928 5ab55268 interfaces%s
+D i-c.ads		20160516092927 5421119b interfaces.c%s
+D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
+D system.ads		20160516092931 c3282aa7 system%s
+D s-atacco.ads		20160516092931 4c36d12f system.address_to_access_conversions%s
+D s-crtl.ads		20160516092927 0ebbdb71 system.crtl%s
+D s-exctab.ads		20160516092931 54135002 system.exception_table%s
+D s-ficobl.ads		20160516092933 078245e4 system.file_control_block%s
+D s-finroo.ads		20160516092931 4ff27390 system.finalization_root%s
+D s-multip.ads		20160516092926 38ac9f73 system.multiprocessors%s
+D s-oscons.ads		20160516210021 3be6931c system.os_constants%s
+D s-osinte.ads		20160516092931 8eb5b5b4 system.os_interface%s
+D s-parame.ads		20160516092932 7e2a0d7f system.parameters%s
+D s-soflin.ads		20160516092929 14e1eb6c system.soft_links%s
+D s-stache.ads		20160516092932 a37c21ec system.stack_checking%s
+D s-stausa.ads		20160516092930 017a0a05 system.stack_usage%s
+D s-stalib.ads		20160516092931 09bd3940 system.standard_library%s
+D s-stoele.ads		20160516092932 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20160516092929 801abd01 system.task_info%s
+D s-taspri.ads		20160516092928 e3ab4429 system.task_primitives%s
+D s-taprop.ads		20160516092928 1dd2e1b6 system.task_primitives.operations%s
+D s-taskin.ads		20160516092932 0766baa7 system.tasking%s
+D s-taprob.ads		20160516092928 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20160516092932 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20160516092927 a67a9949 system.tasking.rendezvous%s
+D s-tassta.ads		20160516092929 70812003 system.tasking.stages%s
+D s-traent.ads		20160516092928 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20160516092930 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20160516092931 1b7d22d2 system.wch_con%s
+D text_io.ads		20160516092930 45d626c9 text_io%s
+X 1 ada.ads
+16K9*Ada 19e8 12|4r6 5r5
+X 4 a-flteio.ads
+20K13*Float_Text_IO[10|46] 12|4w10 5r9
+X 9 a-textio.ads
+166U14*New_Line 12|23s41 36s41
+242U14*Put 12|22s41 35s41
+X 12 concurrenttask.adb
+8U11*concurrentTask 8b11 45t4
+10t14 one 17b19 28t12 39r25 44r9
+11Y23 twoDone 21b40 24l37 24t44 39s29 44s13
+13t14 two 26r25 30b19 41t12
+14Y23 oneDone 26s29 34b40 37l37 37t44
+X 28 s-stausa.ads
+203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
+268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
+X 42 text_io.ads
+24K9*Text_IO=24:29 12|1w6 2r5
+

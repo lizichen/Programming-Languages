@@ -1,5 +1,5 @@
-Welcome to Racket v6.6.
-R5RS legacy support loaded
+;Welcome to Racket v6.6.
+;R5RS legacy support loaded
 > (define L '(1 2 3 4))
 > (car L)
 1
