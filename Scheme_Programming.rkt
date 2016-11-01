@@ -118,13 +118,14 @@
 ;;;; Base Case: L is empty, return the set containing the empty set, '( () )
 ;;;; Assumption: (powerset M), where M is smaller than L, returns set of all subsets of M.
 ;;;; Step: Get the first item in M into the set as itself alone.
-;;;;       Let N be M excluding car M.
+;;;;       Let N be M excluding (car M).
 ;;;;       Pass N into the function for next recursion.
 (define L '(1 2 3 4))
 (define (powerset L)
-  (let ((setFirstToSecHalf (lambda (x) (cons (car L) x))))
-    (if (null? L) (list '())
-        (let ((secondHalf (powerset (cdr L)))) (append (map setFirstToSecHalf secondHalf) secondHalf) ))))
+  (let ((consFirstToSecHalf (lambda (x) (cons (car L) x))))
+    (if (null? L)
+        (list '())
+        (append (map consFirstToSecHalf (powerset (cdr L))) (powerset (cdr L)))  )))
 ;; Test cases:
     (display-answer "7) (powerset (" L ") = " (powerset L))
     (display-answer "7) (powerset '()) = " (powerset '()))
@@ -132,11 +133,8 @@
 
 #| NOTES
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(cond ((null? L) '())
-        (let (( first (car L) )) (append (list (list first)) (powerset( (getNextL (first (cdr L))))))))
-
-
-
+;;
+;; Determine if a number is even or 
 (letrec ((even?
           (lambda (n)
             (if (zero? n)
@@ -149,32 +147,26 @@
                 (even? (- n 1))))))
   (even? 88))
 
+;; Determine the length of a list, using pre-defined function
+(length '(1 2 3)
 
-(letrec ((listLength
-          (lambda (n)
-            (if (null? n)
-                0
-                ((listLength (cdr n)) +1) )))))
-  (listLength '(1 2 3)))
+;; Determine the length of a list, using function define
+(define (listlength L)
+    (if (null? L)
+        0
+        (+ (listLength (cdr L)) 1)))
+(listlength '(1 2 3)
 
+;; Determine the length of a list, using lambda
+(let ((listlength (lambda(L)
+                      (if (null? L)
+                          0
+                          (+ (listlength(cdr L)) 1)))))
+    (listlength '(1 2 3 4)))
+
+;; Use of lambda and let
 (let ((function (lambda(x) (+ x 2)))) (let ((first (car L))) (+ (function first) first)))                                                                            
 
- (define (powerset L)
-    (display L)
-    (let ((first (car L)))
-      (cond ((null? L) '())
-          (append (list (list first)) (list (powerset (cdr L))) ) )))
- (powerset L)
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Trying to get the length of a list:
-;; But failed    
-  (letrec ((listLength
-          (lambda (n)
-             (cond ((null? n) 0)
-                (else (+ listLength(cdr n) 1) ) ) )))
-  (listLength '(1 2 3)))
-
 |#
     
