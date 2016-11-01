@@ -6,7 +6,7 @@
 ;; prep function: display-all.
 (define (display-answer . stuff)
   (for-each display stuff) (newline))
-
+(display-answer "Run the entire program " "to see all test cases on the console...")
 ;; 1) Write (count-numbers L) to return the number of digital numbers in L.
 ;;;;
 ;;;; Base Case: L is null, return 0
@@ -23,7 +23,9 @@
           (if (number? (car L))
               (+ (count-numbers (cdr L)) 1)
               (+ (count-numbers (cdr L)) 0)))))
-(display-answer "(count-number " L ") = " (count-numbers L) )
+;; Test cases:
+    (display-answer "1) (count-numbers " L ") = " (count-numbers L) )
+    (display-answer "1) (count-numbers '()) = " (count-numbers '()) )
 
 ;; 2) Define (insert x L), L is sorted list of numbers in increasing order.
 ;;;;
@@ -39,7 +41,10 @@
         ((> (car L) x) (append (list x) L))
         (else (append (list (car L)) (insert x (cdr L))))
         ))
-(display-answer "(insert " x " " L ") = " (insert x L))
+;; Test cases:
+    (display-answer "2) (insert " x " " L ") = " (insert x L))
+    (display-answer "2) (insert 0 '()) = " (insert 0 '()))
+    (display-answer "2) (insert '() '()) = " (insert '() '()))
 
 ;; 3) Define (insert-all L M), where L is a list of numbers and M is a sorted list of numbers.
 ;;;;
@@ -54,8 +59,10 @@
   (cond ((null? L) M)
         ((null? M) (insert-all (cdr L) (list (car L))))
         (else (insert-all (cdr L) (insert (car L) M)))))
-(display-answer "(insert-all " L " " M " ) = " (insert-all L M))
-(display-answer "(insert-all " L " " E " ) = " (insert-all L E))
+;; Test cases:
+    (display-answer "3) (insert-all " L " " M " ) = " (insert-all L M))
+    (display-answer "3) (insert-all " L " " E " ) = " (insert-all L E))
+    (display-answer "3) (insert-all '() " M " ) = " (insert-all '() M))
 
 ;; 4) Define (sort T), L is an unsorted list of numbers, return the sorted L by performing insertion sort
 ;;;; Base Case: (cdr T) is empty, call insertion (car T) to empty list
@@ -72,7 +79,9 @@
   (cond ((null? T) '())
         ((null? (cdr T)) (insertion (car T) '()))
         (else (insertion (car T) (sort (cdr T))))))) 
-(display-answer "(sort " T " ) = " (sort T))
+;; Test cases:
+    (display-answer "4) (sort " T " ) = " (sort T))
+    (display-answer "4) (sort '() ) = " (sort '()))
           
 ;; 5) Write function (translate op), where op is symbol '+, '-, '*, or '/ and
 ;; returns the corresponding operator.
@@ -84,28 +93,88 @@
         ((eq? '+ op) +)
         ((eq? '- op) -)
         ((eq? '/ op) /)))
-(display-answer "((translate '*) 3 4) = " ((translate '*) 3 4))
+;; Test cases:
+    (display-answer "5) ((translate '*) 3 4) = " ((translate '*) 3 4))
+    (display-answer "5) (translate '+) = " (translate '+))
 
 ;; 6) Function (postfix-val exp), exp represents an expression in postfix notation, that returns the result of evaulating exp.
-;;
+;; (postfix-eval ’((16 12 *) ((2 6 +) (9 1 -) *) /)) will return 3
+;; Use translate at the place where operator appears.
+;;    > (define L '(*))
+;;    > (eq? '* (car L))
+;;    #t
 (define (postfix-eval exp)
-  
+  (cond ((number? (car exp))
+         (cond ((number? (cadr exp)) ((translate (caddr exp)) (car exp) (cadr exp)))
+               (else ((translate(caddr exp) (car exp) (postfix-eval (car (cdr exp))))))))
+         (else (cond ((number? (cadr exp)) ((translate (caddr exp)) (postfix-eval (car exp)) (cdr exp)))
+                     (else ((translate (caddr exp)) (postfix-eval (car exp)) (postfix-eval (car (cdr exp))))))))) ;; why so many parenthesis...
+(define postExpression '((16 12 *) ((2 6 +) (9 1 -) *) /))
+;; Test cases:
+    (display-answer "6) (postfix-eval " postExpression ") = " (postfix-eval postExpression))
+         
+;; 7) A distinct list to represent a set. Function (powerset L), L is a list that represents a set, returns set of all subsets of L.
+;;
+;;;; Base Case: L is empty, return the set containing the empty set, '( () )
+;;;; Assumption: (powerset M), where M is smaller than L, returns set of all subsets of M.
+;;;; Step: Get the first item in M into the set as itself alone.
+;;;;       Let N be M excluding car M.
+;;;;       Pass N into the function for next recursion.
+(define L '(1 2 3 4))
+(define (powerset L)
+  (let ((setFirstToSecHalf (lambda (x) (cons (car L) x))))
+    (if (null? L) (list '())
+        (let ((secondHalf (powerset (cdr L)))) (append (map setFirstToSecHalf secondHalf) secondHalf) ))))
+;; Test cases:
+    (display-answer "7) (powerset (" L ") = " (powerset L))
+    (display-answer "7) (powerset '()) = " (powerset '()))
 
 
-;; 7) A distinct list to represent a set. 
+#| NOTES
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(cond ((null? L) '())
+        (let (( first (car L) )) (append (list (list first)) (powerset( (getNextL (first (cdr L))))))))
 
 
 
+(letrec ((even?
+          (lambda (n)
+            (if (zero? n)
+                #t
+                (odd? (- n 1)))))
+         (odd?
+          (lambda (n)
+            (if (zero? n)
+                #f
+                (even? (- n 1))))))
+  (even? 88))
 
 
+(letrec ((listLength
+          (lambda (n)
+            (if (null? n)
+                0
+                ((listLength (cdr n)) +1) )))))
+  (listLength '(1 2 3)))
+
+(let ((function (lambda(x) (+ x 2)))) (let ((first (car L))) (+ (function first) first)))                                                                            
+
+ (define (powerset L)
+    (display L)
+    (let ((first (car L)))
+      (cond ((null? L) '())
+          (append (list (list first)) (list (powerset (cdr L))) ) )))
+ (powerset L)
 
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Trying to get the length of a list:
+;; But failed    
+  (letrec ((listLength
+          (lambda (n)
+             (cond ((null? n) 0)
+                (else (+ listLength(cdr n) 1) ) ) )))
+  (listLength '(1 2 3)))
 
-
-
-
-
-  
-
-
-                                       
+|#
+    
