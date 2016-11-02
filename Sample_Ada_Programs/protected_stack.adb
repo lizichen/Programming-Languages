@@ -34,8 +34,6 @@ package body Protected_Stack is
      end;
  end P_Stack;
 
-
-
  procedure push(x:integer) is
  begin
     P_Stack.Protected_Push(X);
