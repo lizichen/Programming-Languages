@@ -14,4 +14,13 @@ fun merge [] [] = []
 if a <= b then [a] @ (merge ax (b::bx))
 else [b] @ (merge (a::ax) bx);
 
-(*Q2 - alterating split*)
+(*Q2 - alterating list spliting *)
+fun split [] = ([], [])   
+  | split [a] = ([a], [])  
+  | split (a1::a2::ax) = 
+  	let 
+    	val (b, c) = split ax
+    in 
+    	((a1::b), (a2::c))
+    end;
+
