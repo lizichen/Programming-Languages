@@ -30,7 +30,7 @@ D a-stream.ads		20160516092929 119b8fb3 ada.streams%s
 D a-tags.ads		20160516092932 01f5e3ef ada.tags%s
 D a-textio.ads		20160516092932 386df5d4 ada.text_io%s
 D a-unccon.ads		20160516092931 f9eb8f06 ada.unchecked_conversion%s
-D hello.adb		20161006203253 ce84624b hello%b
+D hello.adb		20161007184408 ce84624b hello%b
 D interfac.ads		20160516092928 5ab55268 interfaces%s
 D i-c.ads		20160516092927 5421119b interfaces.c%s
 D i-cstrea.ads		20160516092927 e53d8b8e interfaces.c_streams%s
