@@ -24,3 +24,50 @@ fun split [] = ([], [])
     	((a1::b), (a2::c))
     end;
 
+(*Q3 - mergeSort*)
+fun mergeSort a = 
+	let
+		val l = split a
+		val l1 = #1 l
+		val l2 = #2 l
+		fun sort [] = []
+			| sort [x] = [x]
+			| sort (x1::x2::xz) = 
+				case Int.compare(x1, x2) of
+					GREATER => x2::x1::xz
+					| EQUAL => x1::x2::xz
+					| LESS => x1::sort (x2::xz)
+		fun fix f x = 
+			if f x = x 
+				then x
+                else fix f (f x)
+        fun mySort x = 
+        	fix sort x
+	in
+		merge (mySort l1) (mySort l2)
+	end;
+
+(* For practise - insertion sort *)
+fun insertionSortFirstTwo (x, []) = [x]
+	| insertionSortFirstTwo (first, second::secondRest) = 
+		case Int.compare(first, second) of
+			GREATER => second::insertionSortFirstTwo(first, secondRest)
+			| _     => first::second::secondRest ;
+
+fun insertionSort [] = []
+	| insertionSort (x::xz) = insertionSortFirstTwo (x, insertionSort xz) ;
+
+(*Q4 - polymorphic sort function*)
+
+
+
+
+
+
+
+
+
+
+
+
+
