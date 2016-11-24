@@ -14,7 +14,7 @@ fun merge [] [] = []
 if a <= b then [a] @ (merge ax (b::bx))
 else [b] @ (merge (a::ax) bx);
 
-(*Q2 - alterating list spliting *)
+(* Q2 - alterating list spliting *)
 fun split [] = ([], [])   
   | split [a] = ([a], [])  
   | split (a1::a2::ax) = 
@@ -24,7 +24,7 @@ fun split [] = ([], [])
     	((a1::b), (a2::c))
     end;
 
-(*Q3 - mergeSort*)
+(* Q3 - mergeSort*)
 fun mergeSort a = 
 	let
 		val l = split a
@@ -47,19 +47,24 @@ fun mergeSort a =
 		merge (mySort l1) (mySort l2)
 	end;
 
-(* For practise - insertion sort *)
-fun insertionSortFirstTwo (x, []) = [x]
-	| insertionSortFirstTwo (first, second::secondRest) = 
-		case Int.compare(first, second) of
-			GREATER => second::insertionSortFirstTwo(first, secondRest)
-			| _     => first::second::secondRest ;
+(* Q3 - mergeSort - Version 2*)
+fun mergeSort a = 
+	let
+		val l = split a
+		val l1 = #1 l
+		val l2 = #2 l
+		fun insertionSortFirstTwo (x, []) = [x]
+		| insertionSortFirstTwo (first, second::secondRest) = 
+			case Int.compare(first, second) of
+				GREATER => second::insertionSortFirstTwo(first, secondRest)
+				| _     => first::second::secondRest
+		fun insertionSort [] = []
+			| insertionSort (x::xz) = insertionSortFirstTwo (x, insertionSort xz)		
+	in
+		merge (insertionSort l1) (insertionSort l2)
+	end;
 
-fun insertionSort [] = []
-	| insertionSort (x::xz) = insertionSortFirstTwo (x, insertionSort xz) ;
-
-(*Q4 - polymorphic sort function*)
-
-
+(* Q4 - polymorphic sort function *)
 
 
 
