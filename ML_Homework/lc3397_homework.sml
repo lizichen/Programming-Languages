@@ -65,8 +65,40 @@ fun mergeSort a =
 	end;
 
 (* Q4 - polymorphic sort function *)
+fun sort (op <) tobesorted = 
+	let
+		fun split [] = ([], [])
+			| split [s] = ([s], [])
+			| split (s1::s2::sx) = 
+			let
+				val (i, j) = split sx
+			in
+				((s1::i), (s2::j))
+			end
 
+		fun merge [] []  = []
+			| merge [] b = b
+			| merge a [] = a
+			| merge (a::ax)	(b::bx) = 
+				if a < b 
+				then [a] @ (merge ax 		(b::bx)	) 
+				else [b] @ (merge (a::ax) 	bx		) 
 
+		fun insertionSortFirstTwo (x, []) = [x]
+			| insertionSortFirstTwo (first, second::secondRest) = 
+				if first < second 
+				then first::second::secondRest
+				else second::insertionSortFirstTwo(first, secondRest) 
+
+		fun insertionSort [] = []
+			| insertionSort (x::xz) = insertionSortFirstTwo (x, insertionSort xz) 
+
+		val l = split tobesorted;
+		val l1 = #1 l
+		val l2 = #2 l
+	in
+		merge (insertionSort l1) (insertionSort l2) 
+	end ;
 
 
 
