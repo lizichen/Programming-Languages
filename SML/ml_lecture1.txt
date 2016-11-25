@@ -1,0 +1,159 @@
+% sml
+Standard ML of New Jersey v110.80 [built: Fri Aug 19 07:49:58 2016]
+- (* This is comment *)
+- (* Basic Types *)
+- 4 
+= ;    (* semi-colon tells the system you're done typing. It's not part of the language *)
+val it = 4 : int
+= 
+= 
+- 3.4 
+= ;
+val it = 3.4 : real
+- "this is a string" ;
+val it = "this is a string" : string
+- (* Lists must be homogeneous -- all elements of the same type *)
+- [1,2,3,4] ;
+val it = [1,2,3,4] : int list
+- ["hello", "there"] ;
+val it = ["hello","there"] : string list
+- [3.4, 5.6];
+val it = [3.4,5.6] : real list
+- [[1,2,3],[4,5,6],[7,8,9]]  ;
+val it = [[1,2,3],[4,5,6],[7,8,9]] : int list list
+- [[1,2,3],4]   (* trying to create a heterogeneous list *)
+= ;
+stdIn:16.1-16.12 Error: operator and operand don't agree [overload conflict]
+  operator domain: [int ty] list * [int ty] list list
+  operand:         [int ty] list * [int ty] list
+  in expression:
+    (1 :: 2 :: 3 :: nil) :: 4 :: nil
+- (* Tuples allow elements of different types, but each position
+=    in the tuple has a fixed type *)
+- (3, 3.4, "hello")  ;
+val it = (3,3.4,"hello") : int * real * string
+- ([1,2,3], 4, 5) ;
+val it = ([1,2,3],4,5) : int list * int * int
+- [("hello", 3), ("bye", 2)];
+val it = [("hello",3),("bye",2)] : (string * int) list
+- (* Defining variables *)
+- val x = 3+(4*5);
+val x = 23 : int
+- (* Defining functions using the "fun" keyword *)
+- fun g x = x+1;
+val g = fn : int -> int
+- (* Using pattern matching to define a function as a set of equations *)
+- fun fac 0 = 1
+=  |  fac n = n * fac (n-1)
+= ;
+val fac = fn : int -> int
+- fac 4;
+val it = 24 : int
+- (* Constructing a list using :: (cons) *)
+- 3::[4,5,6];
+val it = [3,4,5,6] : int list
+- (* Using :: in a pattern *)
+- fun add [] = 0
+=  |  add (x::xs) = x + add xs ;
+val add = fn : int list -> int
+- add [1,2,3,4,5];
+val it = 15 : int
+- (* Use tuples in a pattern *)
+- fun foo (a,b) = a + add b ;
+val foo = fn : int * int list -> int
+- foo (4, [5,6,7,8]) ;
+val it = 30 : int
+- (* You can declare the types of parameters, variables, etc., if you want *)
+- fun addr [] = 0.0
+=  |  addr ((x:real)::xs) = x + addr xs;
+val addr = fn : real list -> real
+- (* Functions can be higher order *)
+- fun h f = f 3 +  7 ;
+val h = fn : (int -> int) -> int
+- (* A LAMBDA is written:  fn x => exp *)
+- fn y => y + 1 ;
+val it = fn : int -> int
+- (fn y => y + 1) 7 ;
+val it = 8 : int
+- (* Return a function as a result *)
+- fun j x = fn y => x + y ;
+val j = fn : int -> int -> int
+- (* Functions take only 1 parameter, but are "Curried" *)
+- fun f x y = x + y  (* f really takes one parameter, x, and returns a function
+                        that takes a parameter y and returns x + y.  That is
+		        f is actually identical to j, above *)
+- ;			
+val f = fn : int -> int -> int
+- f 3 4 ;
+val it = 7 : int
+- f 3;
+val it = fn : int -> int
+- (* Length, below, is POLYMORPHIC, "many shaped", meaning it can be applied to
+     many different types of parameters.  In this case, length can be applied to
+     lists of any type.  That is, for all types 'a (pronounced "alpha"),
+     length can take an 'a list as its parameter and returns an int. The
+     type of length is written 'a list -> int, where 'a is called a "type variable".
+     This form of polymorphism, where type variables appear in a type and
+     are universally quantified (i.e. "for any type 'a"), is called
+     "Parametric Polymorphism".  *)
+- fun length [] = 0   
+=  |  length (y::ys) = 1 + length ys ;
+val length = fn : 'a list -> int
+- length [1,2,3];
+val it = 3 : int
+- length [1.2, 3.4];
+val it = 2 : int
+- length [[1,2],[3,4]] ;
+val it = 2 : int
+- length ["hello"];
+val it = 1 : int
+- (* Append is as @ *)
+- [1,2,3]@[4,5,6] ;
+val it = [1,2,3,4,5,6] : int list
+- (* Writing our own append, this version takes a tuple of
+     two 'a lists as a parameter  and returns an 'a list *)
+- fun append ([], L2) = L2   
+=  |  append ((x::xs), L2) = x :: append (xs, L2) ;
+val append = fn : 'a list * 'a list -> 'a list
+- (* Composition:   *)
+- fun compose f g = fn x => f (g x) ;  
+val compose = fn : ('a -> 'b) -> ('c -> 'a) -> 'c -> 'b
+- (* MAP *)
+- fun map f [] = []
+=  |  map f (x::xs) = (f x) :: map f xs ;
+val map = fn : ('a -> 'b) -> 'a list -> 'b list
+- (* Let introduces nested variables and functions *)
+- fun foo x =
+=    let val y = x * 2
+=        val z = y * 7
+=    in y + z + x 
+=    end ;
+val foo = fn : int -> int
+- fun bar y = let 
+=                fun baz z = z * y
+=              in baz
+=              end ;
+val bar = fn : int -> int -> int
+- (* Mutually recursive functions are defined using "and" *)
+- fun fac1 0 = 1
+=  |  fac1 n = n * fac2 (n-1)
+= and
+=     fac2 0 = 1
+=  |  fac2 n = n * fac1 (n-1)
+= ;
+val fac1 = fn : int -> int
+val fac2 = fn : int -> int
+- (* User-defined datatypes using "datatype". In the simplest form, the
+     datatype declaration is used to enumerate all the values of a type *)
+- datatype stoplight = red | green | yellow ;
+datatype stoplight = green | red | yellow
+- yellow;
+val it = yellow : stoplight
+- (* The values of a datatype can be used as patterns when defining a function *)
+- fun drive green = "go"
+=  |  drive red = "stop"
+=  |  drive yellow = "go faster" ;
+val drive = fn : stoplight -> string
+- drive red ;
+val it = "stop" : string
+

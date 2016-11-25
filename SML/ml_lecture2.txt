@@ -1,0 +1,103 @@
+% sml
+Standard ML of New Jersey v110.80 [built: Fri Aug 19 07:49:58 2016]
+- use "stoplight.sml" ;  (* Loading a file containing ML code *)
+[opening stoplight.sml]
+datatype stoplight = green | red | yellow
+val drive = fn : stoplight -> string
+val it = () : unit
+- (* Attaching values to different enumerations *)
+- datatype status = stopped | moving of int ;
+datatype status = moving of int | stopped
+- stopped;   (* This is a value of type status *)
+val it = stopped : status
+- moving 30 ;  (* moving requires an argument to create a value of type status *)
+val it = moving 30 : status
+- fun speedupby5 stopped = moving 5 
+=  |  speedupby5 (moving n) = moving (n+1) ;
+val speedupby5 = fn : status -> status
+- (* More generally, recursive datatypes such as trees can be defined *)
+- (* Here, a tree is a leaf with an int or an interior node with a tuple of
+     two subtrees *)
+- datatype intTree = leaf of int |  node of intTree * intTree ;
+datatype intTree = leaf of int | node of intTree * intTree
+- (* Creating an actual tree *)
+- val mytree = node (node (leaf 1, leaf 2), leaf 3) ;
+val it = node (node (leaf 1,leaf 2),leaf 3) : intTree
+- (* Computing the fringe of a tree -- the list of values at the leaves *)
+- fun fringe (leaf x) = [x] 
+=  |  fringe (node (L,R)) = fringe L @ fringe R ;
+val fringe = fn : intTree -> int list
+- fringe mytree;
+val it = [1,2,3] : int list
+- (* Datatypes can be POLYMORPHIC *)
+- datatype 'a tree = leaf of 'a | node of 'a tree * 'a tree ;
+datatype 'a tree = leaf of 'a | node of 'a tree * 'a tree
+- val mytree = node (node (leaf 1, leaf 2), leaf 3) ;
+val mytree = node (node (leaf 1,leaf 2),leaf 3) : int tree
+- val yourtree = node (node (leaf 3.4, leaf 5.6), node (leaf 7.8, leaf 8.9)) ;
+val yourtree = node (node (leaf 3.4,leaf 5.6),node (leaf 7.8,leaf 8.9))
+  : real tree
+- fun fringe (leaf x) = [x] 
+   |  fringe (node (L,R)) = fringe L @ fringe R ;
+= val fringe = fn : 'a tree -> 'a list
+- fringe mytree ;
+val it = [1,2,3] : int list
+- fringe yourtree;
+val it = [3.4,5.6,7.8,8.9] : real list
+- (* In an 'a tree, the type variable must be instantiated consistently. That
+     is, 'a can't be both int and real *)
+- val ourtree = node (leaf 6, leaf 5.6) ;
+stdIn:26.5-26.38 Error: operator and operand don't agree [overload conflict]
+  operator domain: [int ty] tree * [int ty] tree
+  operand:         [int ty] tree * real tree
+  in expression:
+    node (leaf 6,leaf 5.6)
+- (* Defining an infix operator *)
+- infix ++ ;  (* This just tells the compiler that the symbol ++ will be used
+                 as an infix operator, it doesn't indicate what the operator does *)
+infix ++
+- (* Defining the behavior of ++ *)
+- fun x++y = (x*x) + (y*y) ;
+val ++ = fn : int * int -> int
+- 3++4 ;
+val it = 25 : int
+- (* An infix operator always takes a two-element tuple as its input *)
+- (* Example: taking an operator as a formal parameter *)
+- fun f (op +) = 3+4 ; 
+val f = fn : (int * int -> 'a) -> 'a
+- (* We can pass ++ to it! Need the (op ..) syntax to pass an operator as a parameter *)
+- f (op ++);
+val it = 25 : int
+- fun g (x,y) = x - y ;  
+val g = fn : int * int -> int
+- f g ; (* Can pass a regular function to f, as long as the function takes a tuple of
+           two elements as a parameter *)
+val it = ~1 : int
+- (* Passing an operator as the actual parameter *)
+- f (op * ) ;  (* Need that space between "*" and ")" so it doesn't look like the end
+                  of a comment. *) 
+val it = 12 : int
+- 3+4 ;
+val it = 7 : int
+- fun h k = k(4,5) ;  (* h takes a function k as a parameter, where k takes a tuple
+                         as a parameter *)
+val h = fn : (int * int -> 'a) -> 'a
+- (op ++) ;    (* ++ takes a tuple as a parameter *)
+val it = fn : int * int -> int
+- h (op ++) ;  (* So ++ can be passed to h *)
+val it = 41 : int
+- fun foo (op -) x y = x - y ;   (* Here "-" is the name of the parameter *)
+val foo = fn : ('a * 'b -> 'c) -> 'a -> 'b -> 'c
+-
+- (* Let's try to write a function of type ('a -> 'b) -> 'a -> 'b list
+- fun f g x = [ g x ] ;
+val f = fn : ('a -> 'b) -> 'a -> 'b list
+-
+- (* Let's try to write a function of type
+    ('a list * 'b list) -> ('a -> 'c) -> ('b -> 'c) -> 'c list *)
+- fun f (a,b) g h = let val (x::xs) = a
+                      val (y::ys) = b
+                  in [ g x, h y ]
+                  end ;
+val f = fn : 'a list * 'b list -> ('a -> 'c) -> ('b -> 'c) -> 'c list
+
