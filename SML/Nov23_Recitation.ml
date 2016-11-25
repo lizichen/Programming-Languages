@@ -1,3 +1,6 @@
+(* Nov 23, 2016 Programming Language SML Recitation *)
+
+
 (*Recitation Example 1*)
 fun folder F y nil = y
 | folder F y (x::xs) = F(x, folder F y xs) ;
