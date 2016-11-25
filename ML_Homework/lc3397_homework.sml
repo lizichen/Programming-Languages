@@ -14,6 +14,7 @@ fun merge [] [] = []
 if a <= b then [a] @ (merge ax (b::bx))
 else [b] @ (merge (a::ax) bx);
 
+
 (* Q2 - alterating list spliting *)
 fun split [] = ([], [])   
   | split [a] = ([a], [])  
@@ -23,6 +24,7 @@ fun split [] = ([], [])
     in 
     	((a1::b), (a2::c))
     end;
+
 
 (* Q3 - mergeSort*)
 fun mergeSort a = 
@@ -47,6 +49,7 @@ fun mergeSort a =
 		merge (mySort l1) (mySort l2)
 	end;
 
+
 (* Q3 - mergeSort - Version 2*)
 fun mergeSort a = 
 	let
@@ -63,6 +66,7 @@ fun mergeSort a =
 	in
 		merge (insertionSort l1) (insertionSort l2)
 	end;
+
 
 (* Q4 - polymorphic sort function *)
 fun sort (op <) tobesorted = 
@@ -108,6 +112,7 @@ datatype 'a tree = empty
 	| leaf of 'a 
 	| node of 'a * 'a tree * 'a tree ;
 
+
 (* Q6 - define function labels 'a tree, print out in-order 'a tree traversal path *)
 fun labels (empty) = []
 	| labels (leaf l) = [l]
@@ -122,6 +127,7 @@ fun labels (empty) = []
 			val it = [] : ?.X1 list
 *)		
 
+
 (* Q7 - Clone tree with swapped values *)
 infix == ;
 
@@ -135,11 +141,13 @@ fun replace (op ==) x y (empty) = empty
 	then (node (y, (replace (op ==) x y L), (replace (op ==) x y R) ))
 	else (node (Value, (replace (op ==) x y L), (replace (op ==) x y R) )) ;
 
+
 (* Q8 - replace empty node with a value *)
 fun replaceEmpty y empty = y
 	| replaceEmpty y (leaf l) = (leaf l)
 	| replaceEmpty y (node (Value, L, R)) = 
 		(node (Value, replaceEmpty y L, replaceEmpty y R)) ;
+
 
 (* Q9 - mapTree function that applies f to every node *)
 fun mapTree f empty = f empty
@@ -149,33 +157,17 @@ fun mapTree f empty = f empty
 (* val mapTree = 
 	fn : ('a tree -> 'a tree) -> 'a tree -> 'a tree *)
 
+
 (* Q10 - sortTree function for an 'a list tree *)
 (* Use mapTree and polymorphic sort function *)
 (* sortTree function is not recursive *)
-
-fun sortTree (op <) tobesorted = 
-	
-	mapTree (fn ('a list tree) => sort (op <) ('a list)) tobesorted ;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fun sortTree (op <) aTree = 
+	mapTree ( 
+				fn (node (Value, L, R))  =>  (node ((sort (op <) Value), L, R))  
+				| (empty) => empty
+				| (leaf l) => (leaf (sort (op <) l)) 
+			) aTree ;
+(* val sortTree = fn : ('a * 'a -> bool) -> 'a list tree -> 'a list tree *)
 
 
 
