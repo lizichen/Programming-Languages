@@ -100,6 +100,12 @@ fun sort (op <) tobesorted =
 		merge (insertionSort l1) (insertionSort l2) 
 	end ;
 
+(*Q5 - define polymorphic type 'a tree*)
+datatype 'a tree = empty 
+	| leaf of 'a 
+	| node of 'a * 'a tree * 'a tree ;
+
+
 
 
 
