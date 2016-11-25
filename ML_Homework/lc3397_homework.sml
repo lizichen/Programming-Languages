@@ -1,6 +1,6 @@
 
-(*PL ML Homework*)
-(*Lizi Chen lc3397@nyu.edu*)
+(* Standard ML / NJ *)
+(* Lizi Chen lc3397@nyu.edu *)
 
 Control.Print.printDepth  := 100;
 Control.Print.printLength := 100;
@@ -100,10 +100,37 @@ fun sort (op <) tobesorted =
 		merge (insertionSort l1) (insertionSort l2) 
 	end ;
 
-(*Q5 - define polymorphic type 'a tree*)
+(* Q5 - define polymorphic type 'a tree*)
 datatype 'a tree = empty 
 	| leaf of 'a 
 	| node of 'a * 'a tree * 'a tree ;
+
+(* Q6 - define function labels 'a tree, print out in-order 'a tree traversal path *)
+fun labels (empty) = []
+	| labels (leaf l) = [l]
+	| labels (node (Value, L, R)) = 
+		(labels (L))@[Value]@(labels (R)) ;	
+(* Problem: 
+	when having val testTree = empty ;
+		labels testTree ; 
+		returns error as below:
+			stdIn:745.1-745.13 Warning: type vars not generalized because of
+	   		value restriction are instantiated to dummy types (X1,X2,...)
+			val it = [] : ?.X1 list
+*)		
+
+(* Q7 - Clone tree with swapped values *)
+infix == ;
+
+fun replace (op ==) x y (empty) = empty
+	| replace (op ==) x y (leaf l) = 
+		if l == x 
+		then (leaf y) 
+		else (leaf l) 
+	| replace (op ==) x y (node (Value, L, R)) = 
+	if Value == x 
+	then (node (y, (replace (op ==) x y L), (replace (op ==) x y R) ))
+	else (node (Value, (replace (op ==) x y L), (replace (op ==) x y R) )) ;
 
 
 
