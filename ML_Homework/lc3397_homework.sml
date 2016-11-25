@@ -99,6 +99,9 @@ fun sort (op <) tobesorted =
 	in
 		merge (insertionSort l1) (insertionSort l2) 
 	end ;
+(* val sort = 
+	fn : ('a * 'a -> bool) -> 'a list -> 'a list *)
+
 
 (* Q5 - define polymorphic type 'a tree*)
 datatype 'a tree = empty 
@@ -131,6 +134,42 @@ fun replace (op ==) x y (empty) = empty
 	if Value == x 
 	then (node (y, (replace (op ==) x y L), (replace (op ==) x y R) ))
 	else (node (Value, (replace (op ==) x y L), (replace (op ==) x y R) )) ;
+
+(* Q8 - replace empty node with a value *)
+fun replaceEmpty y empty = y
+	| replaceEmpty y (leaf l) = (leaf l)
+	| replaceEmpty y (node (Value, L, R)) = 
+		(node (Value, replaceEmpty y L, replaceEmpty y R)) ;
+
+(* Q9 - mapTree function that applies f to every node *)
+fun mapTree f empty = f empty
+	| mapTree f (leaf l) = f (leaf l)
+	| mapTree f (node (Value, L, R)) =
+		 f (node (Value, (mapTree f L), (mapTree f R))) ;
+(* val mapTree = 
+	fn : ('a tree -> 'a tree) -> 'a tree -> 'a tree *)
+
+(* Q10 - sortTree function for an 'a list tree *)
+(* Use mapTree and polymorphic sort function *)
+(* sortTree function is not recursive *)
+
+fun sortTree (op <) tobesorted = 
+	
+	mapTree (fn ('a list tree) => sort (op <) ('a list)) tobesorted ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
