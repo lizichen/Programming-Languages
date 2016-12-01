@@ -26,7 +26,8 @@ fun split [] = ([], [])
     end;
 
 
-(* Q3 - mergeSort*)
+(* Q3 - mergeSort - Version 1*)
+(*
 fun mergeSort a = 
 	let
 		val l = split a
@@ -48,9 +49,10 @@ fun mergeSort a =
 	in
 		merge (mySort l1) (mySort l2)
 	end;
+*)
 
-
-(* Q3 - mergeSort - Version 2*)
+(* Q3 - mergeSort - Version 2 *)
+(*
 fun mergeSort a = 
 	let
 		val l = split a
@@ -66,9 +68,45 @@ fun mergeSort a =
 	in
 		merge (insertionSort l1) (insertionSort l2)
 	end;
+*)
 
+(* Q3 - mergeSort - Version 3 *)
+fun mergeSort [] = []
+	| mergeSort [a] = [a]
+	| mergeSort L = 
+	let 
+		val (l, r) = split L
+	in
+		merge (mergeSort l) (mergeSort r)
+	end;
 
-(* Q4 - polymorphic sort function *)
+(* Q4 - polymorphic sort function - Version 1*)
+fun sort (op <) [] = [] 
+	| sort (op <) [a] = [a]
+	| sort (op <) tobesorted = 
+	let
+		fun split [] = ([], [])
+			| split [s] = ([s], [])
+			| split (s1::s2::sx) = 
+			let
+				val (i, j) = split sx
+			in
+				((s1::i), (s2::j))
+			end
+		fun merge [] []  = []
+			| merge [] b = b
+			| merge a [] = a
+			| merge (a::ax)	(b::bx) = 
+				if a < b 
+				then [a] @ (merge ax 		(b::bx)	) 
+				else [b] @ (merge (a::ax) 	bx		) 
+		val (l, r) = split tobesorted			
+	in
+		merge (sort (op <) l) (sort (op <) r)
+	end ;
+
+(* Q4 - polymorphic sort function - Version 2*)
+(*
 fun sort (op <) tobesorted = 
 	let
 		fun split [] = ([], [])
@@ -103,6 +141,7 @@ fun sort (op <) tobesorted =
 	in
 		merge (insertionSort l1) (insertionSort l2) 
 	end ;
+*)
 (* val sort = 
 	fn : ('a * 'a -> bool) -> 'a list -> 'a list *)
 
